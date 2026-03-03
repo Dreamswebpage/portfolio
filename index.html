@@ -1,0 +1,988 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abhishek Sharma - Cyber Security Portfolio</title>
+    <meta name="description" content="Personal portfolio of Abhishek Sharma - Cyber Security expert." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Adjustments for High-Tech Dark Theme */
+            --bg: #03060a;
+            --card: #0b111b;
+            /* Darker Card for more contrast */
+            --muted: #94a3b8;
+            --text: #f1f5f9;
+            /* Lighter text for contrast */
+            --brand: #4f46e5;
+            /* Primary Purple/Blue */
+            --brand-2: #8b5cf6;
+            /* Secondary Violet */
+            --accent: #06b6d4;
+            /* Cyan/Teal Accent */
+            --ring: rgba(79, 70, 229, 0.5);
+            /* Brand-colored ring */
+            --radius: 1.2rem;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 15px rgba(79, 70, 229, 0.4), 0 0 5px rgba(79, 70, 229, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, #010307 100%);
+            color: var(--text);
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: 0 auto;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* === Utility === */
+        .font-mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* === Navigation === */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(15px);
+            background: rgba(3, 6, 10, .85);
+            border-bottom: 1px solid rgba(148, 163, 184, .1);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 0;
+            width: min(1200px, 92%);
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: .5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            display: grid;
+            place-items: center;
+            margin-right: 10px;
+            box-shadow: 0 0 8px rgba(79, 70, 229, .5);
+        }
+
+        .chip {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--brand);
+            color: var(--accent);
+            font-size: 13px;
+            background: rgba(79, 70, 229, 0.1);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-weight: 600;
+        }
+
+        .nav a {
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav a:hover {
+            color: white;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width .3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--text);
+        }
+
+        /* === Hero Section === */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 40px;
+            align-items: center;
+            padding: 100px 0 60px;
+        }
+
+        .badge {
+            display: inline-grid;
+            grid-auto-flow: column;
+            gap: 8px;
+            align-items: center;
+            font-size: 14px;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-weight: 600;
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .title {
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1.1;
+            margin: 20px 0 16px;
+            font-weight: 800;
+        }
+
+        .title .gradient-text {
+            background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: clamp(16px, 1.8vw, 20px);
+            max-width: 600px;
+        }
+
+        .cta {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, .25);
+            color: white;
+            font-weight: 600;
+            transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
+            background: var(--card);
+        }
+
+        .btn.primary {
+            border: none;
+            background: linear-gradient(90deg, var(--brand), var(--brand-2));
+            box-shadow: var(--glow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow), var(--glow);
+        }
+
+        .btn.primary:hover {
+            background: linear-gradient(90deg, var(--brand-2), var(--brand));
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .avatar-card {
+            background: radial-gradient(1200px 500px at -50% -100%, rgba(79, 70, 229, .2), transparent), var(--card);
+            border: 1px solid rgba(148, 163, 184, .15);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-left: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--brand);
+            /* Stronger border */
+            box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.1);
+            /* Subtle outer ring */
+            display: inline-block;
+            margin: 0 auto;
+            transition: transform .5s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.03);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section {
+            padding: 80px 0 30px;
+        }
+
+        h2.sec-title {
+            font-size: clamp(28px, 4vw, 42px);
+            margin: 0 0 12px;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2.sec-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand), var(--accent));
+            border-radius: 999px;
+        }
+
+        p.sec-sub {
+            color: var(--muted);
+            margin: 0 0 40px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px
+        }
+
+        .grid.cols-3 {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .grid.cols-2 {
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(148, 163, 184, .1);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--brand);
+            transform: translateY(-8px);
+            box-shadow: var(--glow), 0 8px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .tag {
+            font-size: 12px;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(6, 182, 212, 0.1);
+            font-weight: 600;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* === Skills Meter === */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px
+        }
+
+        .skill {
+            background: var(--card);
+            border: 1px solid rgba(148, 163, 184, .1);
+            border-radius: 12px;
+            padding: 16px;
+            color: var(--text);
+        }
+
+        .skill strong {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .meter {
+            height: 10px;
+            background: rgba(148, 163, 184, .1);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        /* Reverted background to dark theme color */
+        .meter>span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--brand), var(--accent));
+            width: var(--val, 0%);
+            /* Removed transition for instant, stable rendering */
+        }
+
+        /* === Experience Timeline === */
+        .timeline {
+            border-left: 3px solid var(--brand);
+            padding-left: 20px;
+            display: grid;
+            gap: 30px
+        }
+
+        .t-item {
+            position: relative;
+            padding: 10px;
+        }
+
+        .t-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 28px;
+            width: 15px;
+            height: 15px;
+            border-radius: 999px;
+            background: var(--brand);
+            border: 3px solid var(--bg);
+            box-shadow: 0 0 0 3px var(--brand-2);
+        }
+
+        .t-h {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 6px
+        }
+
+        .t-role {
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+        }
+
+        .t-time {
+            color: var(--muted);
+            font-size: 14px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .timeline ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-top: 10px;
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        .timeline li {
+            margin-bottom: 6px;
+        }
+
+        /* === Projects & Certifications === */
+        .projects {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .p-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 0 8px;
+        }
+
+        .p-desc {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .grid-auto-fit {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cert-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: linear-gradient(145deg, var(--card), rgba(79, 70, 229, 0.1));
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            color: var(--accent);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+        }
+
+        .cert-card strong {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .cert-card small {
+            color: var(--muted);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+        }
+
+        /* === Contact Form === */
+        input,
+        textarea {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid rgba(148, 163, 184, .15);
+            padding: 14px 16px;
+            border-radius: 12px;
+            outline: none;
+            transition: border-color .3s ease, box-shadow .3s ease;
+            font-size: 16px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--brand-2);
+            box-shadow: 0 0 0 4px var(--ring);
+            background: #0d141e;
+        }
+
+        footer {
+            padding: 40px 0 60px;
+            color: var(--muted)
+        }
+
+        /* === Responsive Design === */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 60px;
+            }
+
+            .avatar-card {
+                order: -1;
+                margin-left: 0;
+                margin-right: 0;
+                padding: 20px;
+            }
+
+            .avatar {
+                width: 200px;
+                height: 200px;
+                border-width: 4px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                background: var(--card);
+                border-radius: var(--radius);
+                padding: 15px 20px;
+                margin-top: 10px;
+                position: absolute;
+                top: 72px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-inner {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-auto-fit {
+                grid-template-columns: 1fr;
+            }
+
+            .grid.cols-2,
+            .grid.cols-3,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            h2.sec-title {
+                font-size: 32px;
+            }
+
+            .t-h {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .t-time {
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="brand">
+                <span class="brand-icon">AS</span>
+                <span>Abhishek Sharma</span>
+            </div>
+            <div class="chip">Let's Secure the Digital World</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="container hero">
+        <div data-aos="fade-right">
+            <span class="badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                    </path>
+                </svg>
+                Jr. Cyber Security Analyst & PHP Developer
+            </span>
+            <h1 class="title">
+                Hi, I'm <span class="gradient-text">Abhishek Sharma</span>, a Cyber Security Enthusiast and Full Stack
+                Web
+                Developer.
+            </h1>
+            <p class="subtitle">
+                A dedicated **Cyber Security Researcher & PHP Developer** with expertise in network security, intrusion
+                detection systems, ethical hacking, and secure web application development. I specialize in building
+                cybersecurity tools and scalable web platforms that combine security with modern technology.
+            </p>
+            <div class="cta">
+                <a class="btn primary" href="#projects">View Projects</a>
+                <a class="btn" href="Abhishek_Sharma_Resume.pdf" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download CV
+                </a>
+            </div>
+        </div>
+        <div class="avatar-card" data-aos="fade-left">
+            <div class="avatar" aria-label="Abhishek Sharma Profile Image">
+                <img src="profile_photo.jpeg" alt="Abhishek Sharma - Profile Photo" fetchpriority="high"
+                    decoding="async">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="sec-title">About Me</h2>
+        <p class="sec-sub">Securing digital systems while building powerful web solutions.</p>
+        <div class="grid-auto-fit">
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <strong style="color:var(--brand)">Location</strong><br>Jaipur, Rajasthan, India
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <strong style="color:var(--brand)">Experience</strong><br>Worked as PHP Developer at Meta Blockchain
+                Technology
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                <strong style="color:var(--brand)">Core Interests</strong><br>Cyber Security, Bug Hunting, AI Security
+                Tools, Secure Web Development
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
+                <strong style="color:var(--brand)">Mission</strong><br>To build secure digital ecosystems by combining
+                cybersecurity intelligence with real-world web applications.
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2 class="sec-title">Core Skills</h2>
+        <p class="sec-sub">A powerful blend of Cyber Security and Development expertise.</p>
+
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--brand); margin-bottom: 20px;">ðŸ” Cyber Security Skills</h3>
+            <div class="skills">
+                <div class="skill" data-aos="fade-up" data-aos-delay="100">
+                    <strong>Ethical Hacking Fundamentals</strong>
+                    <div class="meter"><span style="--val:90%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="200">
+                    <strong>Vulnerability Assessment & Bug Hunting</strong>
+                    <div class="meter"><span style="--val:85%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="300">
+                    <strong>Network Security & DDoS Analysis</strong>
+                    <div class="meter"><span style="--val:88%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="400">
+                    <strong>Secure Coding Practices</strong>
+                    <div class="meter"><span style="--val:92%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="500">
+                    <strong>Security Research & OSINT Basics</strong>
+                    <div class="meter"><span style="--val:85%"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="color: var(--accent); margin-bottom: 20px;">ðŸ’» Development Skills</h3>
+            <div class="skills">
+                <div class="skill" data-aos="fade-up" data-aos-delay="600">
+                    <strong>PHP (Backend Development)</strong>
+                    <div class="meter"><span style="--val:95%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="700">
+                    <strong>HTML5, CSS3, JavaScript</strong>
+                    <div class="meter"><span style="--val:90%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="800">
+                    <strong>Python & SQL Database Management</strong>
+                    <div class="meter"><span style="--val:85%"></span></div>
+                </div>
+                <div class="skill" data-aos="fade-up" data-aos-delay="900">
+                    <strong>REST API Integration</strong>
+                    <div class="meter"><span style="--val:88%"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2 class="sec-title">Projects</h2>
+        <p class="sec-sub">Innovative tools and platforms built with security-first architecture.</p>
+        <div class="grid projects">
+            <article class="card" data-aos="flip-up" data-aos-delay="100">
+                <div class="p-title">ðŸ”Ž Intrusion Detection System (IDS)</div>
+                <p class="p-desc">Developed a network-based IDS that monitors incoming and outgoing traffic, detects
+                    suspicious activities, and alerts administrators in real-time. ðŸ† <b>Awarded Best Software
+                        Award</b>
+                    on National Science Day for this project.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Network Security</span><span class="tag">IDS</span><span
+                        class="tag">Award-Winning</span>
+                </div>
+            </article>
+            <article class="card" data-aos="flip-up" data-aos-delay="200">
+                <div class="p-title">ðŸ›¡ Intrusion Prevention System (IPS)</div>
+                <p class="p-desc">Designed a security layer that not only detects threats but actively blocks malicious
+                    IPs and suspicious requests to protect web applications and servers.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Security</span><span class="tag">IPS</span><span class="tag">Web Protection</span>
+                </div>
+            </article>
+            <article class="card" data-aos="flip-up" data-aos-delay="300">
+                <div class="p-title">ðŸ¯ Honeypot Security System</div>
+                <p class="p-desc">Built a honeypot environment to capture attacker behavior, analyze intrusion patterns,
+                    and strengthen defensive mechanisms.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Honeypot</span><span class="tag">Threat Analysis</span><span
+                        class="tag">Defense</span>
+                </div>
+            </article>
+            <article class="card" data-aos="flip-up" data-aos-delay="400">
+                <div class="p-title">ðŸ§ª CyberPractice Lab for Students</div>
+                <p class="p-desc">Created a hands-on cybersecurity practice platform where students can learn
+                    penetration testing basics, vulnerability analysis, and real-world cyber attack simulations in a
+                    controlled environment.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Education</span><span class="tag">Virtual Lab</span><span
+                        class="tag">Pen-Testing</span>
+                </div>
+            </article>
+            <article class="card" data-aos="flip-up" data-aos-delay="500">
+                <div class="p-title">ðŸŒ CertificateHub Website</div>
+                <p class="p-desc">Developed a dynamic certificate generation and management platform with secure
+                    authentication, admin panel, and automated certificate issuance system.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Web-App</span><span class="tag">Authentication</span><span class="tag">PHP</span>
+                </div>
+            </article>
+            <article class="card" data-aos="flip-up" data-aos-delay="600">
+                <div class="p-title">ðŸ¤– WhatShark</div>
+                <p class="p-desc">Built an intelligent web-based tool designed for automation and secure communication
+                    workflows.</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:15px">
+                    <span class="tag">Automation</span><span class="tag">Tool</span><span class="tag">Secure Comm</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2 class="sec-title">Professional Experience</h2>
+        <p class="sec-sub">My journey in securing digital assets and building robust web applications.</p>
+        <div class="timeline" data-aos="fade-up">
+            <div class="t-item card">
+                <div class="t-h">
+                    <div class="t-role">PHP Developer â€” <span style="color:var(--accent)">Meta Blockchain
+                            Technology</span></div>
+                    <div class="t-time font-mono">Present</div>
+                </div>
+                <ul style="margin:0;padding-left:18px;">
+                    <li>Worked on backend development using PHP.</li>
+                    <li>Developed secure web modules and dynamic dashboards.</li>
+                    <li>Implemented authentication systems and database integration.</li>
+                    <li>Contributed to blockchain-integrated web solutions.</li>
+                    <li>Optimized performance and enhanced application security.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2 class="sec-title">Education</h2>
+        <p class="sec-sub">Foundational academic achievements.</p>
+        <div style="display: flex; justify-content: center;">
+            <div class="card" data-aos="fade-right" style="max-width: 600px; width: 100%;">
+                <strong style="color:var(--brand-2); font-size: 1.1rem;">Diploma in Web Development (12 Months)</strong>
+                <div class="t-time" style="margin-top:5px">STP Computer Education</div>
+                <p style="margin-top:10px; color:var(--muted)">Successfully completed web development diploma with 70%
+                    (Grade B). Gained fundamental knowledge in building secure web applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="container">
+        <h2 class="sec-title">Certifications</h2>
+        <p class="sec-sub">Official training and validation of my specialized skills.</p>
+
+        <div class="grid projects" style="margin-bottom: 30px;">
+            <article class="card" data-aos="flip-up" data-aos-delay="100">
+                <div class="p-title">ðŸ¢ Critical Infrastructure Protection (ICIP)</div>
+                <p class="p-desc">Issued by <strong>OPSWAT Academy</strong><br>Demonstrates understanding of protecting
+                    critical infrastructure systems, industrial networks, and cybersecurity risk management in high-risk
+                    environments.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Issued: 13/11/2025 | Valid Till: 13/11/2026<br>Certificate ID: 0jK-GwShFQ
+                </div>
+            </article>
+
+            <article class="card" data-aos="flip-up" data-aos-delay="200">
+                <div class="p-title">ðŸŒ‘ Dark Web, Anonymity & Cryptocurrency</div>
+                <p class="p-desc">Issued by <strong>Codered</strong><br>Covers dark web fundamentals, anonymity
+                    mechanisms, cryptocurrency basics, and cybercrime ecosystem awareness.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Duration: 1 Hour | Issued: 30 Nov 2025<br>Certificate No: 454828
+                </div>
+            </article>
+
+            <article class="card" data-aos="flip-up" data-aos-delay="300">
+                <div class="p-title">ðŸ’‰ SQL Injection Attacks</div>
+                <p class="p-desc">Issued by <strong>Codered</strong><br>Focused on SQL injection techniques, database
+                    exploitation concepts, and secure coding practices to prevent injection attacks.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Duration: 1 Hour | Issued: 30 Nov 2025<br>Certificate No: 454824
+                </div>
+            </article>
+
+            <article class="card" data-aos="flip-up" data-aos-delay="400">
+                <div class="p-title">ðŸ“± Android Bug Bounty Hunting</div>
+                <p class="p-desc">Issued by <strong>Codered</strong><br>Practical insights into Android application
+                    vulnerability testing and mobile bug bounty methodology.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Duration: 1 Hour | Issued: 30 Nov 2025<br>Certificate No: 454823
+                </div>
+            </article>
+
+            <article class="card" data-aos="flip-up" data-aos-delay="500">
+                <div class="p-title">ðŸ›¡ï¸ Ethical Hacking</div>
+                <p class="p-desc">Issued by <strong>Great Learning Academy</strong><br>Mobile Platforms & Network
+                    Architecture. Comprehensive Ethical Hacker Certificate.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Issued: August 2024
+                </div>
+            </article>
+
+            <article class="card" data-aos="flip-up" data-aos-delay="600">
+                <div class="p-title">ðŸŽ¨ UI / UX for Beginners</div>
+                <p class="p-desc">Issued by <strong>Great Learning Academy</strong><br>UX/UI fundamentals and design
+                    principle certification.</p>
+                <div style="margin-top:10px; font-family:'Roboto Mono', monospace; font-size:13px; color:var(--muted)">
+                    Issued: July 2024
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="sec-title">Get in Touch</h2>
+        <p class="sec-sub">I am always open to discussing new challenges, collaborations, or opportunities.</p>
+        <div style="display:flex;justify-content:center;">
+            <div class="card" style="max-width:600px;width:100%;" data-aos="zoom-in">
+                <form name="contact" method="POST" data-netlify="true"
+                    style="padding-top:10px; display: grid; gap: 15px;">
+                    <input type="hidden" name="form-name" value="contact" />
+
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="Your Professional Email" required />
+                    <textarea id="msg" name="message" rows="6" placeholder="Your message or inquiry"
+                        required></textarea>
+
+                    <button class="btn primary" type="submit" style="width:100%; margin-top:5px;">
+                        Send Secure Message
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align:center;">
+            <p style="font-size:14px; margin-bottom: 5px;">
+                © <span id="year"></span> Abhishek Sharma.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS after content load
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Year in Footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Toggle Logic
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const nav = document.querySelector('.nav');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('is-active'); // Optional: for burger icon animation
+                nav.classList.toggle('menu-open');
+            });
+
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('is-active');
+                    nav.classList.remove('menu-open');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
